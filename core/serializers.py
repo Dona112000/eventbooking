@@ -10,4 +10,11 @@ class BookingSerializer(serializers.ModelSerializer):
     class Meta:
         model = Booking
         fields = '__all__'
-        read_only_fields = ['user']  # ✅ Tell DRF not to expect this in the request
+        read_only_fields = ['user']  # Tell DRF not to expect this in the request
+        
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'name', 'email']

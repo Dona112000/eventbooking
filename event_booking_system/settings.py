@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0%$ih*%l(r3##$mp_3!5!!m9bx*817vj7dscpnm5v2-$hr8-c0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0', '172.25.243.155']
 
 
 # Application definition
@@ -60,7 +60,7 @@ ROOT_URLCONF = 'event_booking_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+         'DIRS': [BASE_DIR / 'core/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -68,6 +68,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
             ],
         },
     },
@@ -133,11 +134,26 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.TokenAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
-    ]
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
 }
+
 DJOSER = {
     'LOGIN_FIELD': 'username',
 }
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'donasebastian112000@gmail.com'
+EMAIL_HOST_PASSWORD = 'khha ttmb nhho jhvo'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = '/'  # Or wherever you want to go after login
+
+# For templates to load
+TEMPLATES[0]['DIRS'] = [BASE_DIR / 'core/templates']

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR Booking Form</title>
+</head>
+<body>
+    <h2>Book Tickets</h2>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: {% if message.tags == 'error' %}red{% else %}green{% endif %};">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="event">Select Event:</label>
+        <select name="event" required>
+            {% for event in events %}
+                <option value="{{ event.id }}">{{ event.title }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <label for="num_tickets">Number of Tickets:</label>
+        <input type="number" name="num_tickets" min="1" value="1" required><br><br>
+
+        <button type="submit">Book Now</button>
+    </form>
+</body>
+</html>

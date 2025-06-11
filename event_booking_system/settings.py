@@ -85,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'eventdb',
         'USER': 'root',
-        'PASSWORD': 'vvdn',
+        'PASSWORD': '',
         'HOST': 'localhost',
         'PORT': '3306',
     }
@@ -146,8 +146,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'donasebastian112000@gmail.com'
-EMAIL_HOST_PASSWORD = 'khha ttmb nhho jhvo'
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
